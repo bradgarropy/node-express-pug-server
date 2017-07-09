@@ -1,4 +1,5 @@
 const bodyparser = require("body-parser");
+const handlebars = require("express-handlebars");
 const express    = require("express");
 const weight     = require("./routes/weight");
 const index      = require("./routes/index");
@@ -11,6 +12,13 @@ const app = express();
 // pretty json
 app.set("json spaces", 4);
 
+
+// engines
+// app.engine("handlebars", handlebars());
+
+app.set("views", "./views");
+// app.set("view engine", "pug");
+app.set("view engine", "handlebars");
 
 // body parser
 let bp_json = bodyparser.json();

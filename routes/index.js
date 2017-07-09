@@ -1,5 +1,4 @@
-const index = require("../views/index");
-const fs    = require("fs");
+const fs = require("fs");
 
 
 function render(request, response) {
@@ -19,14 +18,10 @@ function render(request, response) {
             // convert to json
             let weights = JSON.parse(data);
 
-            // render html table
-            let html = index.render(weights);
-
             // send response
-            response.send(html);
+            response.render("index", { weights: weights });
         }
     });
-
 }
 
 
