@@ -1,0 +1,36 @@
+{
+  "name": "node-express-pug-server",
+  "version": "0.0.1",
+  "description": "\"Simple web server and REST API using Node, Express, and PUG.\"",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradgarropy/node-express-pug-server.git"
+  },
+  "keywords": [
+    "javascript",
+    "html",
+    "node",
+    "nodejs",
+    "express",
+    "expressjs",
+    "pug",
+    "mustache",
+    "handlebars",
+    "rest",
+    "rest-api",
+    "web-server",
+    "web-app",
+    "web-application"
+  ],
+  "author": "\"Brad Garropy\"",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bradgarropy/node-express-pug-server/issues"
+  },
+  "homepage": "https://github.com/bradgarropy/node-express-pug-server#readme"
+}
