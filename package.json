@@ -32,5 +32,12 @@
   "bugs": {
     "url": "https://github.com/bradgarropy/node-express-pug-server/issues"
   },
-  "homepage": "https://github.com/bradgarropy/node-express-pug-server#readme"
+  "homepage": "https://github.com/bradgarropy/node-express-pug-server#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "handlebars": "^4.0.10",
+    "mustache": "^2.3.0",
+    "pug": "^2.0.0-rc.2"
+  }
 }
