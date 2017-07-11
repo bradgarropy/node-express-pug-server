@@ -17,8 +17,8 @@ app.set("json spaces", 4);
 // app.engine("handlebars", handlebars());
 
 app.set("views", "./views");
-// app.set("view engine", "pug");
-app.set("view engine", "handlebars");
+app.set("view engine", "pug");
+// app.set("view engine", "handlebars");
 
 // body parser
 let bp_json = bodyparser.json();
