@@ -1,21 +1,34 @@
 <html>
-    <head></head>
+    <head>
+        <!-- bootstrap css -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
 
     <body>
 
-        <table>
-            <tr>
-                <th>Date</th>
-                <th>Weight</th>
-            </tr>
+        <div class="container">
 
-            {{#weights}}
+            <table class="table table-hover">
                 <tr>
-                    <td>{{date}}</td>
-                    <td>{{weight}}</td>
+                    <th>Date</th>
+                    <th>Weight</th>
                 </tr>
-            {{/weights}}
-        </table>
+
+                {{#weights}}
+                    <tr>
+                        <td>{{date}}</td>
+                        <td>{{weight}}</td>
+                    </tr>
+                {{/weights}}
+            </table>
+
+        </div>
+
+        <!-- jquery -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+        <!-- bootstrap js -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     </body>
 </html>
