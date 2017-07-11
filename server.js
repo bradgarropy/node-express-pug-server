@@ -1,65 +1,37 @@
 const bodyparser = require("body-parser");
 const handlebars = require("express-handlebars");
 const express    = require("express");
-const weight     = require("./routes/weight");
 const index      = require("./routes/index");
+const weight     = require("./routes/weight");
 
 
 // create application
 const app = express();
 
 
-// pretty json
-app.set("json spaces", 4);
-
-
 // engines
 app.engine("handlebars", handlebars());
 
+
+// app settings
+app.set("json spaces", 4);
 app.set("views", "./views");
 app.set("view engine", "pug");
 // app.set("view engine", "handlebars");
 
-// body parser
+
+// middleware
 let bp_json = bodyparser.json();
 let bp_urlencoded = bodyparser.urlencoded( {extended: true} );
 app.use(bp_json);
 app.use(bp_urlencoded);
 
 
-app.get("/", function(request, response) {
-    console.log(request.method + " " +  request.originalUrl);
+// index routes
+app.use("/", index);
 
-    index.render(request, response);
-});
-
-
-app.get("/api/weight", function(request, response) {
-    console.log(request.method + " " +  request.originalUrl);
-
-    weight.read(request, response);
-});
-
-
-app.post("/api/weight", function(request, response) {
-    console.log(request.method + " " +  request.originalUrl);
-
-    weight.add(request, response);
-});
-
-
-app.patch("/api/weight/:date", function(request, response) {
-    console.log(request.method + " " +  request.originalUrl);
-
-    weight.update(request, response);
-});
-
-
-app.delete("/api/weight/:date", function(request, response) {
-    console.log(request.method + " " +  request.originalUrl);
-
-    weight.remove(request, response);
-});
+// weight routes
+app.use("/api/weight", weight);
 
 
 // start application
