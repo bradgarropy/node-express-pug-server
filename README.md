@@ -3,12 +3,20 @@
 *Learning about the world of JavaScript can be incredibly daunting.  
 Learning [Node](https://nodejs.org/) is even worse.*
 
-<!-- TODO: Fill out this section. -->
+Carrying on to the third iteration of the [node-only-server](https://github.com/bradgarropy/node-only-server)! I improved the front end by incorporating an HTML templating module. I looked into both [handlebars](http://handlebarsjs.com/) and [pug](https://pugjs.org/), and ultimately decided on [pug](https://pugjs.org/).
+
+Data model is still crap, as I'm just using file I/O rather than a database.
 
 
 ## Lessons Learned
 
-<!-- TODO: Fill out this section. -->
+Fortunately I was already familiar with HTML templating from a blog I wrote using [Jekyll](https://jekyllrb.com/) and [Liquid](https://shopify.github.io/liquid/). In this case, the challenge came from sorting through all the available templating engines for JavaScript and picking my favorite.
+
+I implemented my index view with both [handlebars](http://handlebarsjs.com/) and [pug](https://pugjs.org/). At the outset they seemed nearly equivalent, the primary difference coming from the fact that [pug](https://pugjs.org/) doesn't use tags and relies on indentation. But as soon as I began using template partials and inheritance to modularize the HTML, it was clear that [handlebars](http://handlebarsjs.com/) was severely lagging behind.
+
+So I ultimately chose [pug](https://pugjs.org/), which as a bonus is the default view engine for [Express](https://expressjs.com/).
+
+Now that my HTML generation is super slick, I really need to improve my archaic data model by incorporating a database into the project!
 
 
 ## Project Iterations
