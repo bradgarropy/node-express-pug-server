@@ -1,24 +1,13 @@
-html
-    
-    head
-        // bootstrap css
-        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
-    
-    body
-        
-        div(class="container")
-            
-            table(class="table table-hover")
-                tr
-                    th Date
-                    th Weight
-                for item in weights
-                    tr
-                        td= item.date
-                        td= item.weight
-                    
-        // jquery
-        script(src="https://code.jquery.com/jquery-3.2.1.min.js")
+extends layout.pug
 
-        // bootstrap js
-        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+
+block content    
+            
+    table(class="table table-hover")
+        tr
+            th Date
+            th Weight
+        for item in weights
+            tr
+                td= item.date
+                td= item.weight

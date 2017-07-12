@@ -1,5 +1,4 @@
 const bodyparser = require("body-parser");
-const handlebars = require("express-handlebars");
 const express    = require("express");
 const index      = require("./routes/index");
 const weight     = require("./routes/weight");
@@ -9,15 +8,10 @@ const weight     = require("./routes/weight");
 const app = express();
 
 
-// engines
-app.engine("handlebars", handlebars());
-
-
 // app settings
 app.set("json spaces", 4);
 app.set("views", "./views");
 app.set("view engine", "pug");
-// app.set("view engine", "handlebars");
 
 
 // middleware
