@@ -25,7 +25,7 @@
     "web-app",
     "web-application"
   ],
-  "author": "\"Brad Garropy\"",
+  "author": "Brad Garropy",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/bradgarropy/node-express-pug-server/issues"
