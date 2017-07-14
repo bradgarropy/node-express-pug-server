@@ -1,31 +1,7 @@
 const fs = require("fs");
 
 
-function read(request, response) {
-
-    // read file
-    fs.readFile("./models/weight.json", function(err, data) {
-
-        // check errors
-        if(err) {
-            console.log(err);
-            throw err;
-        }
-
-        // carry on
-        else {
-
-            // convert to json
-            data = JSON.parse(data);
-
-            // send response
-            response.json(data);
-        }
-    });
-}
-
-
-function add(request, response) {
+function create(request, response) {
 
     // TODO: Validate body data.
 
@@ -65,6 +41,30 @@ function add(request, response) {
                     response.json(weights);
                 }
             });
+        }
+    });
+}
+
+
+function read(request, response) {
+
+    // read file
+    fs.readFile("./models/weight.json", function(err, data) {
+
+        // check errors
+        if(err) {
+            console.log(err);
+            throw err;
+        }
+
+        // carry on
+        else {
+
+            // convert to json
+            data = JSON.parse(data);
+
+            // send response
+            response.json(data);
         }
     });
 }
@@ -122,7 +122,7 @@ function update(request, response) {
 }
 
 
-function remove(request, response) {
+function destroy(request, response) {
 
     fs.readFile("./models/weight.json", function(err, data) {
 
@@ -167,7 +167,7 @@ function remove(request, response) {
 
 
 // exports
-exports.read   = read;
-exports.add    = add;
-exports.update = update;
-exports.remove = remove;
+exports.create  = create;
+exports.read    = read;
+exports.update  = update;
+exports.destroy = destroy;
