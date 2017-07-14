@@ -1,6 +1,6 @@
 const bodyparser = require("body-parser");
 const express    = require("express");
-const logger     = require("./routes/logger");
+const logger     = require("./middleware/logger");
 const weight     = require("./routes/weight");
 const index      = require("./routes/index");
 
