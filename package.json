@@ -1,7 +1,7 @@
 {
   "name": "node-express-pug-server",
   "version": "0.0.1",
-  "description": "\"Simple web server and REST API using Node, Express, and pug.\"",
+  "description": "Simple web server and REST API using Node, Express & pug.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

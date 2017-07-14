@@ -1,4 +1,4 @@
-# Web Server & REST API Using Node & Express
+# Web Server & REST API Using Node, Express & pug
 
 *Learning about the world of JavaScript can be incredibly daunting.  
 Learning [Node](https://nodejs.org/) is even worse.*
