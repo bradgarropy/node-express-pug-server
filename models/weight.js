@@ -1,12 +1,7 @@
 const fs = require("fs");
 
 
-function create(request, response) {
-
-    // TODO: Validate body data.
-
-    // convert weight to int
-    request.body.weight = parseInt(request.body.weight);
+function create(weight, callback) {
 
     // read file
     fs.readFile("./models/weight.json", function(err, data) {
@@ -24,60 +19,23 @@ function create(request, response) {
             let weights = JSON.parse(data);
 
             // add new weight
-            weights.push(request.body);
+            weights.push(weight);
 
             // write file
-            fs.writeFile("./models/weight.json", JSON.stringify(weights, null, 4), function(err) {
-
-                // check errors
-                if(err) {
-                    console.log(err);
-                    throw err;
-                }
-
-                // carry on
-                else {
-                    // send response
-                    response.json(weights);
-                }
-            });
+            fs.writeFile("./models/weight.json", JSON.stringify(weights, null, 4), callback(err, weight));
         }
     });
 }
 
 
-function read(request, response) {
+function read(callback) {
 
     // read file
-    fs.readFile("./models/weight.json", function(err, data) {
-
-        // check errors
-        if(err) {
-            console.log(err);
-            throw err;
-        }
-
-        // carry on
-        else {
-
-            // convert to json
-            data = JSON.parse(data);
-
-            // send response
-            response.json(data);
-        }
-    });
+    fs.readFile("./models/weight.json", callback);
 }
 
 
-function update(request, response) {
-
-    // TODO: Validate body data.
-
-    // convert weight to int
-    request.body.weight = parseInt(request.body.weight);
-
-    // TODO: Validate url date.
+function update(date, weight, callback) {
 
     // read file
     fs.readFile("./models/weight.json", function(err, data) {
@@ -96,33 +54,20 @@ function update(request, response) {
 
             // find index of object
             let index = weights.findIndex(function(weight) {
-                return weight.date === request.params.date;
+                return weight.date === date;
             });
 
             // update weight
-            weights[index].weight = request.body.weight;
+            weights[index].weight = weight;
 
             // write file
-            fs.writeFile("./models/weight.json", JSON.stringify(weights, null, 4), function(err) {
-
-                // check errors
-                if(err) {
-                    console.log(err);
-                    throw err;
-                }
-
-                // carry on
-                else {
-                    // send response
-                    response.json(weights);
-                }
-            });
+            fs.writeFile("./models/weight.json", JSON.stringify(weights, null, 4), callback(err, weights[index]));
         }
     });
 }
 
 
-function destroy(request, response) {
+function destroy(date, callback) {
 
     fs.readFile("./models/weight.json", function(err, data) {
 
@@ -140,27 +85,14 @@ function destroy(request, response) {
 
             // find and remove date
             for(let i = 0; i < weights.length; i++) {
-                if (weights[i].date === request.params.date) {
+                if (weights[i].date === date) {
                     weights.splice(i, 1);
                     break;
                 }
             }
 
             // write file
-            fs.writeFile("./models/weight.json", JSON.stringify(weights, null, 4), function(err) {
-
-                // catch error
-                if (err) {
-                    console.log(err);
-                    throw err;
-                }
-
-                // carry on
-                else {
-                    // send response
-                    response.json(weights);
-                }
-            });
+            fs.writeFile("./models/weight.json", JSON.stringify(weights, null, 4), callback);
         }
     });
 }

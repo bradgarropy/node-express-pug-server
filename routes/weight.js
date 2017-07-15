@@ -1,5 +1,5 @@
 const express = require("express");
-const weight  = require("../models/weight");
+const Weight  = require("../models/weight");
 
 
 // create router
@@ -9,28 +9,84 @@ const router = express.Router();
 // http post
 router.post("/", function(request, response) {
 
-    weight.create(request, response);
+    Weight.create(request.body, function(err, weights) {
+
+        // check errors
+        if(err) {
+            console.log(err);
+            throw err;
+        }
+
+        // carry on
+        else {
+            // send response
+            response.json(weights);
+        }
+    });
 });
 
 
 // http get
 router.get("/", function(request, response) {
 
-    weight.read(request, response);
+    Weight.read(function(err, weights) {
+
+        // check errors
+        if(err) {
+            console.log(err);
+            throw err;
+        }
+
+        // carry on
+        else {
+
+            // convert to json
+            weights = JSON.parse(weights);
+
+            // send response
+            response.json(weights);
+        }
+    });
 });
 
 
 // http patch
 router.patch("/:date", function(request, response) {
 
-    weight.update(request, response);
+    Weight.update(request.params.date, request.body.weight, function(err, weight) {
+
+        // check errors
+        if(err) {
+            console.log(err);
+            throw err;
+        }
+
+        // carry on
+        else {
+            // send response
+            response.json(weight);
+        }
+    });
 });
 
 
 // http delete
 router.delete("/:date", function(request, response) {
 
-    weight.destroy(request, response);
+    Weight.destroy(request.params.date, function(err) {
+
+       // catch error
+       if (err) {
+           console.log(err);
+           throw err;
+       }
+
+       // carry on
+       else {
+           // send response
+           response.json();
+       }
+   });
 });
 
 
